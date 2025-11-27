@@ -1,5 +1,5 @@
 
-#Additional features : Levels ; Hint systems,Score system(based on how many tries before getting it right) , Attempts tracker, Timer mode, Custom game mode , HARD MODE -CHALLENGE, Achievement system
+#Additional features : Levels ; Hint systems,Score system(based on how many tries before getting it right) , Attempts tracker, Custom game mode , HARD MODE -CHALLENGE
 def load_game():
   """summary """
   player_name= (input("Hey There!👋🏻 Enter your name ")).title()
@@ -61,12 +61,12 @@ def gameplay_config():
   hints_amt= 0
   level=input(f"Would you like hints during gameplay? (Select a number)\n1.Easy \n2.Medium \n3.Hard")
   
-  if level.lower()=="easy":
-    pass
-  elif level.lower()== "medium":
-    pass
-  elif level.lower()== "medium":
-    pass
+  if level=="1":
+    hints_amt= 6
+  elif level== "2":
+    hints_amt=3
+  elif level== "3":
+    hints_amt=2
   
   
   
