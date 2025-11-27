@@ -1,5 +1,5 @@
 
-#Additional features : Levels ; Hint systems,Score system , Attempts tracker, Timer mode, Custom game mode , HARD MODE -CHALLENGE, Achievement system
+#Additional features : Levels ; Hint systems,Score system(based on how many tries before getting it right) , Attempts tracker, Timer mode, Custom game mode , HARD MODE -CHALLENGE, Achievement system
 def load_game():
   """summary """
   player_name= (input("Hey There!👋🏻 Enter your name ")).title()
@@ -34,20 +34,50 @@ def load_game():
   
   
 
-def levels(level):
-  hints=input("Would you like hints during gameplay? (Select a number) /n1.Yes /n2.Yes")
+def gameplay_config():
+  
+  """summary """
+  
+  hints=input(f"Would you like hints during gameplay? (Select a number)\n1.Yes \n2.No \n")
+  hints_enabled= False
+  
+  try:
+    if hints=="1":
+      hints_enabled=True
+      return "yes"
+    elif hints=="2":
+      hints_enabled=False
+      return "no"
+    elif  (int(hints) < 1) or (int(hints) > 2):             
+      while True:
+        print("Invalid option entered,please enter another value")
+        hints= input( " ")
+  except ValueError:
+    while True:
+      print("Invalid character entered,please enter another value")
+      hints= input( " ")
+      
+      
+  hints_amt= 0
+  level=input(f"Would you like hints during gameplay? (Select a number)\n1.Easy \n2.Medium \n3.Hard")
+  
   if level.lower()=="easy":
     pass
   elif level.lower()== "medium":
     pass
   elif level.lower()== "medium":
-
+    pass
+  
+  
+  
+  
 def play_game():
   """summary"""
   pass
-  
+
   load_game()
+  gameplay_config()
 
 
 
-print(load_game())
+print(gameplay_config())
