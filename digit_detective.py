@@ -21,15 +21,33 @@ def load_game():
 
   """  #15 underscores
   
-  return template.format(player_name=player_name,)
+  print(template.format(player_name=player_name,))
+  play_on=input(" ")
+  
+  #checking that next is correctly typed in 
+  while play_on.lower() != "next":
+      print("I don't understand that, It seems that you're not quite ready. Type in 'Next' when you're ready")
+      play_on=input(" ")
+  
+  return "Loading game..."
+      
+  
+  
 
-
-
-
+def levels(level):
+  hints=input("Would you like hints during gameplay? (Select a number) /n1.Yes /n2.Yes")
+  if level.lower()=="easy":
+    pass
+  elif level.lower()== "medium":
+    pass
+  elif level.lower()== "medium":
 
 def play_game():
-    pass
+  """summary"""
+  pass
+  
+  load_game()
 
 
 
-#print(load_game())
+print(load_game())
