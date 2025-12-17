@@ -2,8 +2,27 @@ import random
 #Additional features : Levels ; Hint systems,Score system(based on how many tries before getting it right) , Attempts tracker, Custom game mode , HARD MODE -CHALLENGE
 def load_game():
   """summary """
-  player_name= (input("Hey There!👋🏻 Enter your name ")).title()
   
+  global active_game_template
+  
+  player_name= (input("Hey There!👋🏻 Enter your name ")).title()
+  mysery_num="Enter mystery number"
+  active_game_template= """"
+  
+      _______________Digit Detective {player_name}🔎________________ 
+    
+       Score: score                          Attempts left: attempts
+            
+                            
+                        mystery_num     
+
+    _______________________________________________________________________
+  
+  
+  
+  
+  
+  """
   
   template = """
     _______________Welcome to Digit Detective {player_name}🔎________________ 
@@ -31,7 +50,18 @@ def load_game():
   
   
       
+def easy_mode(hints_enabled): 
+  hint_count= 6
+  score= 0
+  attempts=0
   
+  if hints_enabled==False:
+    hint_count=0
+  else:                                       #We can now begin game theory
+    mystery_num= random.randrange(1,300)
+    print(active_game_template.format(score=score,
+                                      attempts=attempts,
+                                      mystery_num=mystery_num,))
   
 
 def gameplay_config():
@@ -64,7 +94,8 @@ def gameplay_config():
       
       if mode in (1,3):
         if mode== 1:
-          hints_amt= 6#see if we should modify the hints amount out
+          #easy_mode(hints_enabled)
+          pass
         elif mode== 2:
           hints_amt=3
         elif mode== 3:
@@ -78,19 +109,35 @@ def gameplay_config():
 
 
   
-def easy_mode(hints_enabled): 
+
+  
+  
+
+
+
+
+
+
+
+def medium_mode(hints_enabled):
   hint_count= 6
   
   if hints_enabled==False:
     hint_count=0
-  else:   #We can now begin game theory
-    number= random.randrange(1,300)
+  else:                                       #We can now begin game theory
+    number= random.randrange(1,500)
+    
 
-def medium_mode(hints_enabled):
-  pass
 
 def hard_mode(hints_enabled):
-  pass
+  hint_count= 6
+  
+  if hints_enabled==False:
+    hint_count=0
+  else:                                      #We can now begin game theory
+    number= random.randrange(1,650)
+    
+
     
    
    
@@ -107,4 +154,4 @@ def play_game():
 
 
 
-print(play_game())
+print(load_game())
