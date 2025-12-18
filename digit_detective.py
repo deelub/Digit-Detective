@@ -11,10 +11,10 @@ def load_game():
   
       _______________Digit Detective {player_name}🔎________________ 
     
-       Score: score                          Attempts left: attempts
+       Score: score         hints                Attempts left: attempts
             
                             
-                        mystery_num     
+                         mystery_num     
 
     _______________________________________________________________________
   
@@ -51,31 +51,73 @@ def load_game():
   
       
 def easy_mode(hints_enabled): 
+  
+  #Do if hints enabled code
+  if hints_enabled==True:
+    hints_amt=3
+  else:
+    hints_amt=0
+    
   score= 500
   attempts=5
-  hints_amt=3
-  hint_ls_range=[30,60,90,120,150] #Only five --- we can  siftthrough the range of the number
-  hints_ls=[["The number is 30 or less.","It’s closer to 0 than to 50.","The number is in the first quartile of the range"],
+  hint_ls_range=[31,61,91,121,151] #All hints in coordination with range
+  hints_ls=[["The number is 30 or less.","It’s closer to 0 than to 50.","The number is in the first quartile of the range"],  
             ["The number is 60 or less but greater than 30","It’s in the lower half of the range.","It's closer to 50 than to 0"],
-            ["It is less than 100","It is greater than 60.","It comes before 90 on the number line"],
+            ["It is less than 100","It is greater than 60.","It comes before 90 on the number line"], 
             ["It is less than 100","It is greater than 60.","It comes before 90 on the number line"],
             ["It is less than 100","It is greater than 60.","It comes before 90 on the number line"]]
   
-  #We can now begin game theory
+
   mystery_num= random.randrange(150)
-  hint_count=6     #how are we goig to give hnint of the numnber if we do not know whta the number is?
+  placeholder_mystery_num= "?"
+  
   while (attempts >=0) or (mystery_num != guess):#generate the code that after a certain amount of attempt ask if they wante hint
     guess=input("Guess a number in the ranges of 1-150")
-    #do it by index of range that should
     
-    attempts -= 1
-    score -= 50
-      
-    
-    print(active_game_template.format(score=score,
+    if guess != mystery_num:
+      hints_req= int(input("Would you like a hint?(Select a number) \n1.Yes \2.N \n"))
+      #checking to see what hint to give base on the range they're in 
+      if hints_req==1:
+        for num_range in hint_ls_range:
+          if mystery_num in range(num_range):
+            pos=hint_ls_range.index(num_range) #get the pos to correlate with hint
+            for hints in hints_ls: #going through main hint list             #get the current hint_ls
+              current_ls=hints[pos]
+              
+        hint_dict={
+          1: current_ls[0],
+          2:current_ls[1],
+          3:current_ls[2]
+        }
+        
+        attempts -= 1
+        score -= 50
+        
+        print(active_game_template.format(score=score,
                                       attempts=attempts,
+                                      hints=hints,
+                                      mystery_num=placeholder_mystery_num,))
+        
+      elif hints_req==2:
+        score-=50
+        attempts -= 1
+        
+        print(active_game_template.format(score=score,
+                                      attempts=attempts,
+                                      hints=hints,
+                                      mystery_num=placeholder_mystery_num,))
+        
+      else:
+        raise ValueError(hints_req= int(input("Would you like a hint?(Select a number) \n1.Yes \2.N \n")))
+        
+  #Only if the right number is guessed
+  print(active_game_template.format(score=score,
+                                      attempts=attempts,
+                                      hints=hints,
                                       mystery_num=mystery_num,))
-  
+  return "bye"
+
+
 
 def gameplay_config():
   
@@ -118,7 +160,7 @@ def gameplay_config():
         
       # return "loading game..."      #find a way to return the game that is being returned
     except ValueError:
-      print("INvalid option. \nWhat mode would you like to play? (Select a number)\n1.Easy \n2.Medium \n3.Hard \n")
+      print("Invalid option. \nWhat mode would you like to play? (Select a number)\n1.Easy \n2.Medium \n3.Hard \n")
 
 
   
@@ -167,4 +209,4 @@ def play_game():
 
 
 
-print(load_game())
+print(easy_mode(hints_enabled=True))
