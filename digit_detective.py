@@ -1,5 +1,7 @@
 import random
 #Additional features : Levels ; Hint systems,Score system(based on how many tries before getting it right) , Attempts tracker, Custom game mode , HARD MODE -CHALLENGE
+
+
 def load_game():
   """summary """
   
@@ -7,19 +9,16 @@ def load_game():
   
   player_name= (input("Hey There!👋🏻 Enter your name ")).title()
   mysery_num="Enter mystery number"
-  active_game_template= """"
+  active_game_template= """
   
-      _______________Digit Detective {player_name}🔎________________ 
+      _______________Digit Detective 🔎________________ 
     
-       Score: score         hints                Attempts left: attempts
+       Score: {score}      hints left:{hints}                Attempts left:{attempts}
             
                             
                          mystery_num     
 
     _______________________________________________________________________
-  
-  
-  
   
   
   """
@@ -50,7 +49,7 @@ def load_game():
   
   
       
-def easy_mode(hints_enabled): 
+def easy_mode(hints_enabled): #Change easy mode to be in the range of 75
   
   #Do if hints enabled code
   if hints_enabled==True:
@@ -60,7 +59,7 @@ def easy_mode(hints_enabled):
     
   score= 500
   attempts=5
-  hint_ls_range=[31,61,91,121,151] #All hints in coordination with range
+  hint_ls_range=[16,31,46,61,76] #All hints in coordination with range
   hints_ls=[["The number is 30 or less.","It’s closer to 0 than to 50.","The number is in the first quartile of the range"],  
             ["The number is 60 or less but greater than 30","It’s in the lower half of the range.","It's closer to 50 than to 0"],
             ["It is less than 100","It is greater than 60.","It comes before 90 on the number line"], 
@@ -68,8 +67,29 @@ def easy_mode(hints_enabled):
             ["It is less than 100","It is greater than 60.","It comes before 90 on the number line"]]
   
 
-  mystery_num= random.randrange(150)
+  mystery_num= random.randrange(75)
   placeholder_mystery_num= "?"
+  
+  for num_range in hint_ls_range:
+    if mystery_num in range(num_range):
+      pos=hint_ls_range.index(num_range) #get the pos to correlate with hint
+      for hints in hints_ls: #going through main hint list             #get the current hint_ls
+        current_ls=hints[pos]
+        break
+    break
+  
+          
+  # hint_dict={
+  #   1: current_ls[0],
+  #   2:current_ls[1],
+  #   3:current_ls[2]
+  # }
+  
+  hint_dict={
+    1: 2,
+    2:3,
+    3:4
+  }
   
   while (attempts >=0) or (mystery_num != guess):#generate the code that after a certain amount of attempt ask if they wante hint
     guess=input("Guess a number in the ranges of 1-150")
@@ -78,24 +98,19 @@ def easy_mode(hints_enabled):
       hints_req= int(input("Would you like a hint?(Select a number) \n1.Yes \2.N \n"))
       #checking to see what hint to give base on the range they're in 
       if hints_req==1:
-        for num_range in hint_ls_range:
-          if mystery_num in range(num_range):
-            pos=hint_ls_range.index(num_range) #get the pos to correlate with hint
-            for hints in hints_ls: #going through main hint list             #get the current hint_ls
-              current_ls=hints[pos]
-              
-        hint_dict={
-          1: current_ls[0],
-          2:current_ls[1],
-          3:current_ls[2]
-        }
-        
-        attempts -= 1
-        score -= 50
+        if hints_amt <=0: 
+          print("No hints left, continue gameplay")
+          guess=input("Guess a number in the ranges of 1-150")
+        else:
+          print(hint_dict.get(hints_amt))
+          guess=input("Guess a number in the ranges of 1-150")
+          attempts -= 1
+          score -= 50
+          hints_amt -= 1
         
         print(active_game_template.format(score=score,
                                       attempts=attempts,
-                                      hints=hints,
+                                      hints=hints_amt,
                                       mystery_num=placeholder_mystery_num,))
         
       elif hints_req==2:
@@ -106,16 +121,13 @@ def easy_mode(hints_enabled):
                                       attempts=attempts,
                                       hints=hints,
                                       mystery_num=placeholder_mystery_num,))
-        
-      else:
-        raise ValueError(hints_req= int(input("Would you like a hint?(Select a number) \n1.Yes \2.N \n")))
-        
-  #Only if the right number is guessed
-  print(active_game_template.format(score=score,
-                                      attempts=attempts,
-                                      hints=hints,
-                                      mystery_num=mystery_num,))
-  return "bye"
+             
+    elif mystery_num==guess:
+      print(active_game_template.format(score=score,
+                                          attempts=attempts,
+                                          hints=hints,
+                                          mystery_num=mystery_num,))
+
 
 
 
@@ -208,5 +220,5 @@ def play_game():
   
 
 
-
+load_game()
 print(easy_mode(hints_enabled=True))
