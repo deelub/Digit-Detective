@@ -73,23 +73,14 @@ def easy_mode(hints_enabled): #Change easy mode to be in the range of 75
   for num_range in hint_ls_range:
     if mystery_num in range(num_range):
       pos=hint_ls_range.index(num_range) #get the pos to correlate with hint
-      for hints in hints_ls: #going through main hint list             #get the current hint_ls
-        current_ls=hints[pos]
-        break
+      # for hints in hints_ls: #going through main hint list             #get the current hint_ls
     break
   
-          
-  # hint_dict={
-  #   1: current_ls[0],
-  #   2:current_ls[1],
-  #   3:current_ls[2]
-  # }
+  current_ls=hints_ls[0][pos]
+  # Only take the first 3 hints if you want
+  hint_dict = {i+1: hint for i, hint in enumerate(current_ls[:3])}
+
   
-  hint_dict={
-    1: 2,
-    2:3,
-    3:4
-  }
   
   while (attempts >=0) or (mystery_num != guess):#generate the code that after a certain amount of attempt ask if they wante hint
     guess=input("Guess a number in the ranges of 1-150")
@@ -119,13 +110,13 @@ def easy_mode(hints_enabled): #Change easy mode to be in the range of 75
         
         print(active_game_template.format(score=score,
                                       attempts=attempts,
-                                      hints=hints,
+                                      hints=hints_amt,
                                       mystery_num=placeholder_mystery_num,))
              
     elif mystery_num==guess:
       print(active_game_template.format(score=score,
                                           attempts=attempts,
-                                          hints=hints,
+                                          hints=hints_amt,
                                           mystery_num=mystery_num,))
 
 
