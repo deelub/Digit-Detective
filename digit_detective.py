@@ -53,18 +53,23 @@ def load_game():
 def easy_mode(hints_enabled): 
   score= 500
   attempts=5
+  hints_amt=3
   hint_ls_range=[30,60,90,120,150] #Only five --- we can  siftthrough the range of the number
-  if hints_enabled==False:
-    hint_count=0
-  else:                                       #We can now begin game theory
-    mystery_num= random.randrange(150)
-    hint_count=6     #how are we goig to give hnint of the numnber if we do not know whta the number is?
-    while (attempts >=0) or (mystery_num != guess):#generate the code that after a certain amount of attempt ask if they wante hint
-      guess=input("Guess a number in the ranges of 1-150")
-      if (hint_count < 6) :
-        give_hint= 
-      attempts -= 1
-      score -= 50
+  hints_ls=[["The number is 30 or less.","It’s closer to 0 than to 50.","The number is in the first quartile of the range"],
+            ["The number is 60 or less but greater than 30","It’s in the lower half of the range.","It's closer to 50 than to 0"],
+            ["It is less than 100","It is greater than 60.","It comes before 90 on the number line"],
+            ["It is less than 100","It is greater than 60.","It comes before 90 on the number line"],
+            ["It is less than 100","It is greater than 60.","It comes before 90 on the number line"]]
+  
+  #We can now begin game theory
+  mystery_num= random.randrange(150)
+  hint_count=6     #how are we goig to give hnint of the numnber if we do not know whta the number is?
+  while (attempts >=0) or (mystery_num != guess):#generate the code that after a certain amount of attempt ask if they wante hint
+    guess=input("Guess a number in the ranges of 1-150")
+    #do it by index of range that should
+    
+    attempts -= 1
+    score -= 50
       
     
     print(active_game_template.format(score=score,
