@@ -60,11 +60,11 @@ def easy_mode(hints_enabled): #Change easy mode to be in the range of 75
   score= 500
   attempts=5
   hint_ls_range=[16,31,46,61,76] #All hints in coordination with range
-  hints_ls=[["The number is 30 or less.","It’s closer to 0 than to 50.","The number is in the first quartile of the range"],  
-            ["The number is 60 or less but greater than 30","It’s in the lower half of the range.","It's closer to 50 than to 0"],
-            ["It is less than 100","It is greater than 60.","It comes before 90 on the number line"], 
-            ["It is less than 100","It is greater than 60.","It comes before 90 on the number line"],
-            ["It is less than 100","It is greater than 60.","It comes before 90 on the number line"]]
+  hints_ls=[["You at the very near beginning of numbers","It’s closer to 0 than to 25.","The number is 15 or lower."],  
+            ["The number is past the very beginning, but the big numbers are still far away","It’s higher than 15, but still below the middle of the range","Your guess should be somewhere between 16 and 30"]
+            ["The number is moving closer to the middle, but not quite there yet","It’s above 30, but still below the midpoint of the range","Your guess should be between 31 and 45"], 
+            ["The number has crossed the middle, but the highest numbers are still ahead.","It’s above the midpoint, but not near the top.","The number is somewhere between 46 and 60."],
+            ["You’re in the higher numbers now, near the end of the range","It’s above 60, but not beyond the maximum.","The number is between 61 and 75"]]
   
 
   mystery_num= random.randrange(75)

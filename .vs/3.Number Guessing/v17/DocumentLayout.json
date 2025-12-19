@@ -1,0 +1,54 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Divin\\OneDrive\\Documents\\100Day100Proj\\Week1\\3.Number Guessing\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Divin\\OneDrive\\Documents\\100Day100Proj\\Week1\\3.Number Guessing\\digit_detective.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:digit_detective.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Divin\\OneDrive\\Documents\\100Day100Proj\\Week1\\3.Number Guessing\\digit_detective_test.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:digit_detective_test.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "digit_detective.py",
+              "DocumentMoniker": "C:\\Users\\Divin\\OneDrive\\Documents\\100Day100Proj\\Week1\\3.Number Guessing\\digit_detective.py",
+              "RelativeDocumentMoniker": "digit_detective.py",
+              "ToolTip": "C:\\Users\\Divin\\OneDrive\\Documents\\100Day100Proj\\Week1\\3.Number Guessing\\digit_detective.py",
+              "RelativeToolTip": "digit_detective.py",
+              "ViewState": "AQIAAC4AAAAAAAAAAAAAAD8AAAB5AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2025-12-19T19:59:28.69Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "digit_detective_test.py",
+              "DocumentMoniker": "C:\\Users\\Divin\\OneDrive\\Documents\\100Day100Proj\\Week1\\3.Number Guessing\\digit_detective_test.py",
+              "RelativeDocumentMoniker": "digit_detective_test.py",
+              "ToolTip": "C:\\Users\\Divin\\OneDrive\\Documents\\100Day100Proj\\Week1\\3.Number Guessing\\digit_detective_test.py",
+              "RelativeToolTip": "digit_detective_test.py",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2025-12-19T19:59:26.224Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
