@@ -10,5 +10,9 @@
 #     -when hint ==0 game does not stop
 #     -If no hint is picked then- it still displays hint count.
 
+# To do :
+#     - Breaking point for no more attempts left
+#     -
+
 
 # fins place hol.der for code if hints enabled 
