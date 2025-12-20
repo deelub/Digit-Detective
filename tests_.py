@@ -9,3 +9,6 @@
 # current errors:
 #     -when hint ==0 game does not stop
 #     -If no hint is picked then- it still displays hint count.
+
+
+# fins place hol.der for code if hints enabled 

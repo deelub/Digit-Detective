@@ -13,10 +13,10 @@ def load_game():
   
       _______________Digit Detective 🔎________________ 
     
-       Score: {score}      hints left:{hints}                Attempts left:{attempts}
+       Score: {score}      Hints:{hints}                Attempts left:{attempts}
             
                             
-                         {mystery_num}   
+                      Myster number: {mystery_num}   
 
     _______________________________________________________________________
   
@@ -90,12 +90,11 @@ def gameplay_config():
     except ValueError:
       print("Invalid option. \nWhat mode would you like to play? (Select a number)\n1.Easy \n2.Medium \n3.Hard \n")
   
-      
+
+############# Beginning of easy mode ########################
 def easy_mode(): #Change easy mode to be in the range of 75
   
   #Do if hints enabled code
- 
-    
   score= 500
   attempts=5
   hint_ls_range=[16,31,46,61,76] #All hints in coordination with range
@@ -105,60 +104,91 @@ def easy_mode(): #Change easy mode to be in the range of 75
             ["The number has crossed the middle, but the highest numbers are still ahead.","It’s above the midpoint, but not near the top.","The number is somewhere between 46 and 60."],
             ["You’re in the higher numbers now, near the end of the range","It’s above 60, but not beyond the maximum.","The number is between 61 and 75"]]
   
-
-  mystery_num= random.randrange(75)
-  placeholder_mystery_num= "?"
-  
-  for num_range in hint_ls_range:
-    if mystery_num <= num_range:
-      pos=hint_ls_range.index(num_range) #get the pos to correlate with hint
-      break
-      # for hints in hints_ls: #going through main hint list             #get the current hint_ls
-  
-  current_ls=hints_ls[pos]
-  # Only take the first 3 hints if you want
-  hint_dict = {i+1: hint for i, hint in enumerate(current_ls[:3])}
-
   
   
+  #Code block for if hints enabled
+  if hints_enabled==True:
+    hints_amt=3
+    for num_range in hint_ls_range:
+      if mystery_num <= num_range:
+        pos=hint_ls_range.index(num_range) #get the pos to correlate with hint
+        break
+        # for hints in hints_ls: #going through main hint list             #get the current hint_ls
+    
+    
   while (attempts >=0) or (mystery_num != guess):#generate the code that after a certain amount of attempt ask if they wante hint
-    if hints_enabled==True:
-      hints_req=int(input("Would you like a hint \n1.Yes \n2.No"))
+    
     guess=input("Guess a number in the ranges of 1-75 \n")
     
     if guess != mystery_num:
-      hints_req= int(input("Wrong answer ❌ \nWould you like a hint?(Select a number) \n1.Yes \2.N \n"))
+      hints_req= int(input("Wrong answer ❌ \nWould you like to use a hint?(Select a number) \n1.Yes \2.N \n"))
       #checking to see what hint to give base on the range they're in 
-      if hints_req==1:
-        if hints_amt <=0: 
-          print("No hints left, continue gameplay")
-          guess=input("Guess a number in the ranges of 1-75 \n")
-        else:
+      # if hints_req==1:
+      if hints_amt <=0: 
+        print("No hints left, continue gameplay")
+        guess=input("Guess a number in the ranges of 1-75 \n")
+      else:
           print(hint_dict.get(hints_amt))
           guess=input("Guess a number in the ranges of 1-75 \n")
-          attempts -= 1
-          score -= 50
-          hints_amt -= 1
+      attempts -= 1
+      score -= 50
+      hints_amt -= 1
         
-        print(active_game_template.format(score=score,
+      print(active_game_template.format(score=score,
                                       attempts=attempts,
                                       hints=hints_amt,
                                       mystery_num=placeholder_mystery_num,))
         
-      elif hints_req==2:
-        score-=50
-        attempts -= 1
-        
-        print(active_game_template.format(score=score,
-                                      attempts=attempts,
-                                      hints=hints_amt,
-                                      mystery_num=placeholder_mystery_num,))
-             
+      # elif hints_req==2:
+      score-=50
+      attempts -= 1
+      
+      print(active_game_template.format(score=score,
+                                    attempts=attempts,
+                                    hints=hints_amt,
+                                    mystery_num=placeholder_mystery_num,))
+            
     elif mystery_num==guess:
       print(active_game_template.format(score=score,
                                           attempts=attempts,
                                           hints=hints_amt,
                                           mystery_num=mystery_num,))
+
+    current_ls=hints_ls[pos]
+    # Only take the first 3 hints if you want
+    hint_dict = {i+1: hint for i, hint in enumerate(current_ls[:3])}
+    
+    
+    
+    
+    
+  else:#If hints not enabled for the gameplay
+
+    hints_amt="Disabled"
+    score-=50
+    attempts -= 1
+      
+    print(active_game_template.format(score=score,
+                                    attempts=attempts,
+                                    hints=hints_amt,
+                                    mystery_num=placeholder_mystery_num,))
+
+  
+
+  mystery_num= random.randrange(75)
+  placeholder_mystery_num= "?"
+  print(active_game_template.format(score=score,
+                                      attempts=attempts,
+                                      hints=hints_amt,
+                                      mystery_num=placeholder_mystery_num,)) 
+    
+  
+
+  
+
+
+  
+  
 
 
 
