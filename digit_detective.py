@@ -120,21 +120,23 @@ def easy_mode(): #Change easy mode to be in the range of 75
     
     while (attempts >=0) and (mystery_num != guess):#generate the code that after a certain amount of attempt ask if they wante hint 
       guess=int(input("Guess a number in the ranges of 1-75 \n") )
+      #Do the code if mystery number is equal to that first
       if guess != mystery_num:
-        hints_req= int(input("Wrong answer ❌ \nWould you like to use a hint?(Select a number) \n1.Yes \2.N \n"))
-        current_ls=hints_ls[pos]
-        # Only take the first 3 hints if you want
-        hint_dict = {i+1: hint for i, hint in enumerate(current_ls[:3])}
-        
+        if hints_amt > 0: 
+          hints_req= int(input("Wrong answer ❌ \nWould you like to use a hint?(Select a number) \n1.Yes \2.N \n"))
+          current_ls=hints_ls[pos]
+          # Only take the first 3 hints if you want
+          hint_dict = {i+1: hint for i, hint in enumerate(current_ls[:3])}
+          
         if hints_amt <=0: 
           print("No hints left, continue gameplay")
           guess=int(input("Guess a number in the ranges of 1-75 \n"))
         else:
             print(hint_dict.get(hints_amt))
             guess=int(input("Guess a number in the ranges of 1-75 \n"))
+            hints_amt -= 1
         attempts -= 1
         score -= 50
-        hints_amt -= 1
           
         print(active_game_template.format(score=score,
                                         attempts=attempts,
